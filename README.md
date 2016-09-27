@@ -120,27 +120,27 @@ Exemple : un composant de Slider
 
 ```css
 .Slider {
-
+    /* Styles block Slider */
 }
 
 .Slider_slide {
-
+    /* Styles element Slider_slide */
 }
 
 .Slider_controls {
-
+    /* Styles element Slider_controls */
 }
 
 .Slider_control {
-
+    /* Styles element Slider_control */
 }
 
 .Slider_control-previous {
-
+    /* Styles modifier Slider_control-previous */
 }
 
 .Slider_control-next {
-    
+    /* Styles modifier Slider_control-next */
 }
 ```
 
