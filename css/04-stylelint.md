@@ -16,3 +16,8 @@ Des
 sont disponibles pour certains éditeurs. Ceux-ci permettent d'avoir un feedback
 en temps réel dans l'éditeur. Il est vivement recommandé d'installer le plugin
 qui correspond à ton éditeur si celui-ci est disponible.
+
+---
+
+[Retour au sommaire CSS](/css/00-index.md) /
+[Retour au sommaire global](/README.md)
