@@ -77,4 +77,4 @@ Exemple : un composant de Slider
 
 ---
 
-[Suivant : StyleLint](/css/01-stylelint.md)
+[Suivant : StyleLint](/css/04-stylelint.md)
