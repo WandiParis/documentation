@@ -10,6 +10,6 @@ compiler l'ensemble du code en un seul fichier.
 
 * [ECMAScript 2015+](/js/01-es2015-and-beyond.md)
 * [Transpilation (Babel)](/js/02-transilation-babel.md)
-* [ESLint](/js/03-eslint.md)
+* [Module bundle (Webpack)](/js/03-module-bundling-webpack.md)
 * [Architecture](/js/04-architecture.md)
-* [Module bundle (Webpack)](/js/05-module-bundling-webpack.md)
+* [ESLint](/js/05-eslint.md)
