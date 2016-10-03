@@ -175,7 +175,7 @@ Pour les `anciens`, entendons par là un simple `retour chariot`:
 # app/config/routing.yml
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
- 
+# ceci est une ligne vide (obligé SyntaxHighlighter supprime la ligne vide)
 ```
 
 > non accessible sur sensio :(
