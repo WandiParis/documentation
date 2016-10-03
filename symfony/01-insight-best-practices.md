@@ -263,7 +263,24 @@ Ne pas laisser de `todo` ou `fixme` dans le code.
 #### Code commenté
 Ne pas laisser de **code commenté** dans le code.
 
-Attention, il y en a par défaut dans `web/app.php`, le supprimer tout bonnement.
+Attention, il y en a par défaut dans `web/app.php`, le supprimer tout bonnement:
+
+```php
+# ...
+// REMOVE THESE LINES
+/*
+$apcLoader = new Symfony\Component\ClassLoader\ApcClassLoader(sha1(__FILE__), $loader);
+$loader->unregister();
+$apcLoader->register(true);
+*/
+# ...
+// THIS ONE
+//$kernel = new AppCache($kernel);
+# ...
+// AND THIS ONE
+//Request::enableHttpMethodParameterOverride();
+# ...
+```
 
 > non accessible sur sensio :(
 
