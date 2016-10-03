@@ -312,7 +312,7 @@ Les actions des `Controller` ne doivent pas excéder **20 lignes** (sic)
 
 Insights nous permet de dépasser ce cap pour max **10%** des actions de l'ensemble de l'app.
 
-Il faut délocaliser toute les gros traitements dans des `services`, la logique SQL dans les `repositories`, etc.
+Il faut délocaliser toute les gros traitements dans des `Services`, la logique SQL dans les `Repositories`, etc.
 
 > https://insight.sensiolabs.com/what-we-analyse/symfony.controller.action_method_too_long
 
