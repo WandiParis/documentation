@@ -321,3 +321,20 @@ Il faut délocaliser toute les gros traitements dans des `Services`, la logique 
 Même logique que côté `Controller`, cette fois côté `Twig`. 
 
 Cette fois-ci le max est de **5%** des actions et la longueur maximale tolérée est de **200 lignes**.
+
+> non accessible sur sensio :(
+
+## Booléens
+
+Les opérations sur les `bool` doivent être opérées **strictement** (`===`):
+
+```php
+if ($foo->isValid() === true){
+    # do some stuff
+}
+elseif ($foo->isValid() === false){
+    # do some stuff
+}
+```
+
+> non accessible sur sensio :(
