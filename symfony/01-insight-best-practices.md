@@ -332,7 +332,7 @@ Les opérations sur les `bool` doivent être opérées **strictement** (`===`):
 if ($foo->isValid() === true){
     # do some stuff
 }
-elseif ($foo->isValid() === false){
+if ($foo->isValid() !== false){
     # do some stuff
 }
 ```
