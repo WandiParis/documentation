@@ -256,7 +256,7 @@ Idem, ne pas laisser de `method`, `property`, `variable`, `parameter` inutiles.
 > non accessible sur sensio :(
 
 #### Todo / fixme
-Ne pas laisser de `todo` dans le code.
+Ne pas laisser de `todo` ou `fixme` dans le code.
 
 > non accessible sur sensio :(
 
