@@ -41,7 +41,7 @@ Pour le générer > http://nux.net/secret
 ## Services 
 
 #### Injection de dépendance
-Imaginons que vous avez besoin de la `Request` ET de la `Session`.
+Imaginons que vous ayez besoin de la `Request` **ET** de la `Session`.
 
 Ne jamais passer le **container de service** à un service mais les services souhaités.
 
@@ -69,8 +69,7 @@ Créer le fichier `phpunit.xml.dist` à la racine du projet:
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="app/autoload.php"
->
+         bootstrap="app/autoload.php">
     <php>
         <ini name="error_reporting" value="-1" />
         <server name="KERNEL_DIR" value="app/" />
@@ -176,7 +175,7 @@ Pour les `anciens`, entendons par là un simple `retour chariot`:
 # app/config/routing.yml
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
-
+ 
 ```
 
 > non accessible sur sensio :(
