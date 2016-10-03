@@ -1,3 +1,3 @@
 # Symfony
 
-* [Insights Best Practices](/symfony/insight-best-practices.md)
+* [Insight Best Practices](/symfony/insight-best-practices.md)
