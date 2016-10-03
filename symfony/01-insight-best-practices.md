@@ -140,7 +140,7 @@ Ou à minima le fichier générique:
 
 ## Settings
 
-## Config
+#### Config
 Supprimer le **fichier de config** `config.php` déployé par défaut par Sf, il peut indiquer des infos critiques pour un vilain h@ck3r:
 
 ```bash
