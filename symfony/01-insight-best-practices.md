@@ -307,7 +307,7 @@ key:
 
 #### Controller
 
-Les actios des `Controller` ne doivent pas excéder **20 lignes** (sic)
+Les actions des `Controller` ne doivent pas excéder **20 lignes** (sic)
 > HF & GL
 
 Insights nous permet de dépasser ce cap pour max **10%** des actions de l'ensemble de l'app.
@@ -320,4 +320,4 @@ Il faut délocaliser toute les gros traitements dans des `services`, la logique 
 
 Même logique que côté `Controller`, cette fois côté `Twig`. 
 
-Cette fois-ci le max est de **5%** et la longueur maximale tolérée est de **200 lignes**.
+Cette fois-ci le max est de **5%** des actions et la longueur maximale tolérée est de **200 lignes**.
