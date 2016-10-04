@@ -16,7 +16,7 @@ TL;DR : Un petit `bundle` qui permet de paginer toute la couche `ORM` ou `ODM`.
 # app/AppKernel.php
 $bundles = array(
     // ...
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+    new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
     // ...
 );
 ```
