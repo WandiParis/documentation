@@ -79,7 +79,7 @@ public function indexAction(Request $request)
 #### View
 
 ```twig
-# src/AppBundle/Resources/views/Blog/index.html.twig
+{# src/AppBundle/Resources/views/Blog/index.html.twig #}
 
 {# ... #}
 
