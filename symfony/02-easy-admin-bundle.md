@@ -552,3 +552,156 @@ Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique 
 
 > https://github.com/javiereguiluz/EasyAdminBundle/issues/1183
 > https://github.com/ckfinder/ckfinder-symfony3-bundle
+
+- - -
+
+## Full example
+
+```yaml
+# app/config/config.yml
+ckfinder:
+    connector:
+        authenticationClass: AppBundle\Services\CustomCKFinderAuth
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        product_image:
+            uri_prefix:         "%product_images_path%"
+            upload_destination: '%kernel.root_dir%/../web/uploads/products'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+ivory_ck_editor:
+    input_sync: true
+    default_config: base_config
+    configs:
+        base_config:
+            entities_latin: false
+            toolbar:
+                - { name: "document", items: [ "Source" ] }
+                - { name: "cut", items: [ "Cut", "Copy", "Paste" ] }
+                - { name: "basicstyles", items: [ "Bold", "Italic", "Underline" ] }
+                - { name: "insert", items: [ "Image" ] }
+                - { name: "links", items: [ "Link", "Unlink" ] }
+                - { name: "justify", items: [ "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock" ] }
+                - { name: "paragraph", items: [ "NumberedList", "HorizontalRule", "TextColor" ] }
+                - { name: "styles", items: [ "Format" ] }
+
+easy_admin:
+    site_name: Orkyn Back-Office
+    entities:
+        Category:
+            class: AppBundle\Entity\Category
+            label: 'Catégories'
+            list:
+                actions:
+                    - { name: 'new', label: 'Ajouter', icon: 'add' }
+                    - { name: 'show', label: 'Afficher', icon: 'search' }
+                    - { name: 'edit', label: 'Modifier', icon: 'edit' }
+                    - { name: 'delete', label: 'Supprimer', icon: 'delete' }
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'parent', label: 'Catégorie Parente' }
+                    - { property: 'position', label: 'Position' }
+            show:
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'parent', label: 'Catégorie Parente' }
+                    - { property: 'position', label: 'Position' }
+            form:
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'parent', label: 'Catégorie Parente' }
+            edit:
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'parent', label: 'Catégorie Parente' }
+                    - { property: 'position', label: 'Position' }
+        Product:
+            class: AppBundle\Entity\Product
+            label: 'Produits'
+            list:
+                actions:
+                    - { name: 'new', label: 'Ajouter', icon: 'add' }
+                    - { name: 'show', label: 'Afficher', icon: 'search' }
+                    - { name: 'edit', label: 'Modifier', icon: 'edit' }
+                    - { name: 'delete', label: 'Supprimer', icon: 'delete' }
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'image', type: 'image', base_path: "%product_images_path%" }
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'excerpt', label: 'Accroche' }
+                    - { property: 'category', label: 'Catégorie' }
+            show:
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'image', type: 'image', base_path: "%product_images_path%" }
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'excerpt', label: 'Accroche' }
+                    - { property: 'category', label: 'Catégorie' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'excerpt', label: 'Accroche' }
+                    - { property: 'description', type: 'ckeditor', label: 'Description' }
+                    - { property: 'category', label: 'Catégorie' }
+        Page:
+            class: AppBundle\Entity\Page
+            label: 'Pages'
+            list:
+                actions:
+                    - { name: 'new', label: 'Ajouter', icon: 'add' }
+                    - { name: 'show', label: 'Afficher', icon: 'search' }
+                    - { name: 'edit', label: 'Modifier', icon: 'edit' }
+                    - { name: 'delete', label: 'Supprimer', icon: 'delete' }
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'position', label: 'Position' }
+            show:
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'content', type: 'raw', label: 'Corps' }
+                    - { property: 'position', label: 'Position' }
+            form:
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'content', type: 'ckeditor', label: 'Corps' }
+            edit:
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'content', type: 'ckeditor', label: 'Corps' }
+                    - { property: 'position', label: 'Position' }
+        Ref:
+                class: AppBundle\Entity\Ref
+                label: 'Références'
+                list:
+                    actions:
+                        - { name: 'new', label: 'Ajouter', icon: 'add' }
+                        - { name: 'show', label: 'Afficher', icon: 'search' }
+                        - { name: 'edit', label: 'Modifier', icon: 'edit' }
+                        - { name: 'delete', label: 'Supprimer', icon: 'delete' }
+                    fields:
+                        - { property: 'id', label: 'ID' }
+                        - { property: 'ref', label: 'Référence' }
+                        - { property: 'product1', label: 'Produit 1' }
+                        - { property: 'product2', label: 'Produit 2' }
+                show:
+                    fields:
+                        - { property: 'id', label: 'ID' }
+                        - { property: 'ref', label: 'Référence' }
+                        - { property: 'product1', label: 'Produit 1' }
+                        - { property: 'product2', label: 'Produit 2' }
+                form:
+                    fields:
+                        - { property: 'ref', label: 'Référence' }
+                        - { property: 'product1', label: 'Produit 1' }
+                        - { property: 'product2', label: 'Produit 2' }
+
+```
