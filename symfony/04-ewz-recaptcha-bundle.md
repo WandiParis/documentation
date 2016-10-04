@@ -75,7 +75,7 @@ class ContactType extends AbstractType
 }
 ```
 
-#### Entity
+#### `Entity`
 
 ```php
 # src/AppBundle/Entity/Contac.php
@@ -102,7 +102,7 @@ class Contact
 }
 ```
 
-#### View
+#### `View`
 
 ```twig
 {# src/AppBundle/Resources/views/Home/contact.html.twig #}
