@@ -47,6 +47,7 @@ framework:
 # src/AppBundle/Form/Type/ContactType.php
 
 # ...
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
 
 class ContactType extends AbstractType
 {

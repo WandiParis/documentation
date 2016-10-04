@@ -56,9 +56,6 @@ Le `bundle` permet de paginer:
 ```php
 # src/AppBundle/Controller/BlogController.php
 
-# ...
-use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
-
 public function indexAction(Request $request)
 {
     $qbd = $this->get('doctrine')->getRepository('AppBundle:News')->createQueryBuilder('n');
