@@ -76,7 +76,7 @@ public function indexAction(Request $request)
 }
 ```
 
-#### View
+#### `View`
 
 ```twig
 {# src/AppBundle/Resources/views/Blog/index.html.twig #}
