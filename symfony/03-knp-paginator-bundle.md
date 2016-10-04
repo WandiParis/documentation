@@ -52,7 +52,7 @@ Le `bundle` permet de paginer:
 * `Doctrine\Common\Collection\ArrayCollection`
 * `ModelCriteria` - Propel ORM query
 * array with `Solarium_Client` and `Solarium_Query_Select` as elements
-
+ 
 ```php
 # src/AppBundle/Controller/BlogController.php
 
