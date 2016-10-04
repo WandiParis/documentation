@@ -438,7 +438,7 @@ $bundles = array(
 );
 ```
 
-###### Download again (pr de license)
+###### Download again (pb de license)
 
 ```bash
 > php bin/console ckfinder:download
