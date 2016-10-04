@@ -158,7 +158,7 @@ easy_admin:
                 fields: # fields to display
                     # ...
             edit: # ONLY edit
-                fields:
+                fields: # fields to display
                     # ...
     # ...
 ```
@@ -169,7 +169,7 @@ easy_admin:
 
 #### Custom types
 
-`email`, `image`, `raw`, `tel`, `toggle`, `url`, `easyadmin_autocomplete`
+`email`, `image`, `raw`, `tel`, `toggle`, `url`, `easyadmin_autocomplete` (sur une **fk uniquement**)
 
 #### Formating dates
 
@@ -199,7 +199,7 @@ easy_admin:
 
 - - -
 
-## Plugins
+## Extend / Plugins
 
 #### [VichUploaderBundle](https://github.com/dustin10/VichUploaderBundle)
 
@@ -345,6 +345,7 @@ easy_admin:
 
 > https://github.com/javiereguiluz/EasyAdminBundle/blob/master/Resources/doc/tutorials/upload-files-and-images.md
 
+- - -
 
 #### [IvoryCKEditorBundle](https://github.com/egeloen/IvoryCKEditorBundle)
 
@@ -413,6 +414,8 @@ easy_admin:
 ###### Full configuration reference
 
 > https://github.com/javiereguiluz/EasyAdminBundle/blob/master/Resources/doc/tutorials/wysiwyg-editor.md
+
+- - -
 
 #### [CKFinderBundle](https://github.com/ckfinder/ckfinder-symfony3-bundle)
 
