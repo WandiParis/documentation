@@ -46,6 +46,7 @@ Imaginons que vous ayez besoin de la `Request` **ET** de la `Session`.
 Ne jamais passer le **container de service** à un service mais les services souhaités.
 
 ```yaml
+# app/config/services.yml
 services:
     foo_service:
         class:     AppBundle\FooService
@@ -62,6 +63,7 @@ PHP doit être capable d'accéder et d'exécuter l'ensemble des tests unitaires 
 Créer le fichier `phpunit.xml.dist` à la racine du projet:
 
 ```xml
+<!-- phpunit.xml.dist -->
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
@@ -223,6 +225,7 @@ Sf s'installe avec un name foireux (tout du moins sous PHPStorm) et ne possède 
 Corriger le **name** et ajouter la **description**:
 
 ```json
+# composer.json
 {
     "name": "WandiParis/project-name",
     "description": "project-description",
@@ -235,6 +238,7 @@ Corriger le **name** et ajouter la **description**:
 ##### composer.lock
 
 Le `composer.lock` doit être up to date:
+
 ```bash
 > composer update
 ```
@@ -266,6 +270,7 @@ Ne pas laisser de **code commenté** dans le code.
 Attention, il y en a par défaut dans `web/app.php`, le supprimer tout bonnement:
 
 ```php
+# web/app.php
 # ...
 // REMOVE THESE LINES
 /*
