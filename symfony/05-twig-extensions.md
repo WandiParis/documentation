@@ -63,7 +63,7 @@ services:
 
 #### Truncate
 
-###### Cut char
+###### Cut chars
 
 ```twig
 {# src/AppBundle/Resources/views/Controller/action.html.twig #}
@@ -140,7 +140,7 @@ Pour voir la liste des paramètres des différentes extensions:
 ```twig
 {# src/AppBundle/Resources/views/Controller/action.html.twig #}
 
-{{ product.quantity|localizednumber }}
+{{ product.quantity|localizednumber('scientific') }}
 
 {# ... #}
 
