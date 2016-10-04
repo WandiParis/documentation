@@ -1,6 +1,6 @@
 # [Easy Admin Bundle](https://github.com/javiereguiluz/EasyAdminBundle) - Symfony Admin Generator
 
-TL;DR : Un petit `bundle` développé par un mec de SensioLabs qui permet de générer un Bo CRUD en seulement quelques paramétrages yaml.
+TL;DR : Un petit `bundle` développé par un dev de SensioLabs qui permet de générer un Bo CRUD en seulement quelques paramétrages `yaml`.
 
 ## Installation
 
@@ -13,7 +13,7 @@ TL;DR : Un petit `bundle` développé par un mec de SensioLabs qui permet de gé
 #### Enable
 
 ```php
-// app/AppKernel.php
+# app/AppKernel.php
 $bundles = array(
     // ...
     new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
@@ -24,7 +24,7 @@ $bundles = array(
 #### Routing
 
 ```yaml
-// app/config/routing.yml
+# app/config/routing.yml
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
     type:     annotation
@@ -41,7 +41,7 @@ easy_admin_bundle:
 
 `EasyAdminBundle` ne propose pas de services d'authentification, en revanche il affiche les informations de l'utilisateur couramment loggué sous Sf (`Guard`).
 
-Le moyen le plus simple de restreindre l'accès par une authentification base64 au Bo est d'implémenter le `firewall` directement dans `security.yml`
+Le moyen le plus simple de restreindre l'accès par une `authentification base64` au Bo est d'implémenter le `firewall` directement dans `security.yml`
 
 ```yaml
 # app/config/security.yml
@@ -76,10 +76,10 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
 ```
 
-Pour le hash du password, j'utilise sha512 + encodage en base64 en 1 seule itération:
+Pour le hash du password, j'utilise `sha512` + encodage en `base64` en 1 seule itération:
 > http://cryptage.online-convert.com/fr/generateur-sha512
 
-Ne pas oublier (best practices ;) de délocaliser le %user_pwd% dans `parameters.yml`:
+Ne pas oublier (best practices ;) de délocaliser le `%user_pwd%` dans `parameters.yml`:
 
 ```yaml
 # app/config/parameters.yml
@@ -94,7 +94,7 @@ parameters:
 #### Basic usage
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     entities:
         - AppBundle\Entity\Category
@@ -108,7 +108,7 @@ easy_admin:
 #### Admin name & color theme
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     site_name: YOUR_PROJECT Back-Office
     design:
@@ -119,7 +119,7 @@ easy_admin:
 #### Label &amp; Disable Actions
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     # ...
     entities:
@@ -133,7 +133,7 @@ easy_admin:
 #### Fields to view / manage
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     # ...
     entities:
@@ -174,7 +174,7 @@ easy_admin:
 #### Formating dates
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     formats:
         date:     'd/m/Y'
@@ -186,7 +186,7 @@ easy_admin:
 #### Formating numbers
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     formats:
         number: '%.2f'
@@ -213,7 +213,7 @@ easy_admin:
 ###### Enable
 
 ```php
-// app/AppKernel.php
+# app/AppKernel.php
 $bundles = array(
     // ...
     new Vich\UploaderBundle\VichUploaderBundle(),
@@ -224,7 +224,7 @@ $bundles = array(
 ###### Settings
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 vich_uploader:
     db_driver: orm
     mappings:
@@ -247,6 +247,8 @@ parameters:
 ###### Entities
 
 ```php
+# src/AppBundle/Entity/Product.php
+
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -311,7 +313,7 @@ class Product
 List & Show:
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     entities:
         Product:
@@ -328,7 +330,7 @@ easy_admin:
 Add & Edit:
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     entities:
         Product:
@@ -355,7 +357,7 @@ easy_admin:
 ###### Enable
 
 ```php
-// app/AppKernel.php
+# app/AppKernel.php
 $bundles = array(
     // ...
     new Vich\UploaderBundle\VichUploaderBundle(),
@@ -372,7 +374,7 @@ $bundles = array(
 ###### Settings
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 ivory_ck_editor:
     input_sync: true
     default_config: base_config
@@ -397,7 +399,7 @@ ivory_ck_editor:
 List & Show:
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 easy_admin:
     entities:
         Product:
@@ -425,7 +427,7 @@ Actuellement, rien d'officiel n'est supporté par `EasyAdminBundle`, faut pimper
 ###### Enable
 
 ```php
-// app/AppKernel.php
+# app/AppKernel.php
 $bundles = array(
     // ...
             new CKSource\Bundle\CKFinderBundle\CKSourceCKFinderBundle(),
@@ -448,7 +450,7 @@ $bundles = array(
 ###### Routing
 
 ```yaml
-// app/config/routing.yml
+# app/config/routing.yml
 ckfinder_connector:
     resource: "@CKSourceCKFinderBundle/Resources/config/routing.yml"
     prefix:   /
@@ -463,7 +465,7 @@ ckfinder_connector:
 ###### Settings
 
 ```yaml
-// app/config/config.yml
+# app/config/config.yml
 ckfinder:
     connector:
         authenticationClass: AppBundle\Services\CustomCKFinderAuth
@@ -471,11 +473,12 @@ ckfinder:
 
 ###### Authenticator
 
-Quick & Dirty.
+Dans le meilleur des mondes, faudrait implémenter le `firewall` sur les routes du `CkFinder`.
+En attendant, quick & dirty...
 
 ```php
 <?php
-// src/AppBundle/Services/CustomCKFinderAuth.php
+# src/AppBundle/Services/CustomCKFinderAuth.php
 
 namespace AppBundle\Services;
 
@@ -492,10 +495,11 @@ class CustomCKFinderAuth extends AuthenticationBase
 
 ###### Plug CkEditor &amp; CkFinder
 
-Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique la moins *sale* que j'ai trouvé est de surchargé le layout de base du bundle côté `app` pour charger `CkFinder`:
+Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique la moins *sale* que j'ai trouvé est de surcharger le `layout` de base du bundle côté `app` pour charger `CkFinder`:
 
 ```twig
 {# app/Resources/EasyAdminBundle/views/default/layout.html.twig #}
+
 <!DOCTYPE html>
 <html lang="{{ app.request.locale|split('_')|first|default('en') }}">
     <head>
