@@ -361,7 +361,7 @@ easy_admin:
 # app/AppKernel.php
 $bundles = array(
     // ...
-    new Vich\UploaderBundle\VichUploaderBundle(),
+    new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
     // ...
 );
 ```
@@ -420,6 +420,23 @@ easy_admin:
 #### [CKFinderBundle](https://github.com/ckfinder/ckfinder-symfony3-bundle)
 
 Actuellement, rien d'officiel n'est supporté par `EasyAdminBundle`, faut pimper les choses.
+
+###### Hack psr/cache
+
+CKFinder a une mauvaise déclaration de dépendance de `psr/cache`, lui même utilisé par Sf.
+
+Forcer la version 1.0.0 dans le `composer.json` pour éviter tout conflit:
+
+```json
+# composer.json
+{
+    "require": {
+        // ...
+        "psr/cache": "1.0.0",
+        // ...
+    }
+}
+```
 
 ###### Download
 
