@@ -555,8 +555,10 @@ Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique 
     {# HACK LO CKFINDER #}
     <script type="text/javascript">
         window.onload = function () {
-            if (window.ivory_ckeditor_page_content) {
-                CKFinder.setupCKEditor(ivory_ckeditor_page_content);
+            if (window.CKEDITOR){
+                for (var ckInstance in CKEDITOR.instances){
+                    CKFinder.setupCKEditor(CKEDITOR.instances[ckInstance]);
+                }
             }
         }
     </script>
