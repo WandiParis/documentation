@@ -515,62 +515,37 @@ class CustomCKFinderAuth extends AuthenticationBase
 
 ###### Plug CkEditor &amp; CkFinder
 
-Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique la moins *sale* que j'ai trouvé est de surcharger le `layout` de base du bundle côté `app` pour charger `CkFinder`:
+Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique la moins *sale* que j'ai trouvé est de créer un `JS` de setup:
 
-```twig
-{# app/Resources/EasyAdminBundle/views/default/layout.html.twig #}
-
-<!DOCTYPE html>
-<html lang="{{ app.request.locale|split('_')|first|default('en') }}">
-    <head>
-        
-        {# ... #}
-
-        <title>{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %}</title>
-
-        {# HACK LO CKFINDER #}
-        {# > https://github.com/javiereguiluz/EasyAdminBundle/issues/1183 #}
-        {% include "CKSourceCKFinderBundle::setup.html.twig" %}
-        {# /HACK LO CKFINDER #}
-
-        {% block head_stylesheets %}
-            <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/easyadmin-all.min.css') }}">
-            <style>
-                {{ easyadmin_config('_internal.custom_css')|raw }}
-            </style>
-        {% endblock %}
-        
-        {# ... #}
-        
-    </head>
-
-    {% block body %}
-    <body id="{% block body_id %}{% endblock %}" class="easyadmin sidebar-mini {% block body_class %}{% endblock %} {{ app.request.cookies.has('_easyadmin_navigation_iscollapsed') ? 'sidebar-collapse' }}">
-        
-        {# ... #}
-        
-    </body>
-    {% endblock body %}
-
-    {# HACK LO CKFINDER #}
-    <script type="text/javascript">
-        window.onload = function () {
-            if (window.CKEDITOR){
-                for (var ckInstance in CKEDITOR.instances){
-                    CKFinder.setupCKEditor(CKEDITOR.instances[ckInstance]);
-                }
-            }
-        }
-    </script>
-    {# /HACK LO CKFINDER #}
-
-</html>
+```js
+// web/js/setup-ckfinder.js
+window.onload = function () {
+	if (window.CKEDITOR){
+		CKFinder.config( { connectorPath: '/app.php/ckfinder/connector' } );
+		for (var ckInstance in CKEDITOR.instances){
+			CKFinder.setupCKEditor(CKEDITOR.instances[ckInstance]);
+		}
+	}
+}
 ```
 
-###### Full configuration reference
+et de le charger (ainsi que `ckfinder.js` bien entendu) dans le `config.yml`:
 
-> https://github.com/javiereguiluz/EasyAdminBundle/issues/1183
-> https://github.com/ckfinder/ckfinder-symfony3-bundle
+```yaml
+# app/config/config.yml
+easy_admin:
+    design:
+        assets:
+            js:
+                - '/bundles/cksourceckfinder/ckfinder/ckfinder.js'
+                - '/js/setup-ckfinder.js'
+```
+
+**ATTENTION**, l'URL du connector étant absolute sur `/app.php`, il se peut que vous ayez besoin de vider la cache de prod:
+
+```bash
+> php bin/console cache:clear --env=prod
+```
 
 - - -
 
