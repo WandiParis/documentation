@@ -547,6 +547,8 @@ easy_admin:
 > php bin/console cache:clear --env=prod
 ```
 
+- - -
+
 #### [JMSTranslationBundle](https://github.com/schmittjoh/JMSTranslationBundle)
 
 TL;DR : Un `bundle` permettant d'administrer par GUI l'ensemble des `translations` de son `app`.
