@@ -594,6 +594,7 @@ php bin/console translation:extract fr --dir=./src/ --dir=./app/ --output-dir=./
 ```
 
 Suppimer les `validators.xx.xliff` si vous n'en avez pas besoin.
+Supprimer les anciens `yaml` si vous en aviez.
 			
 ###### Routing
 
@@ -605,7 +606,7 @@ JMSTranslationBundle_ui:
     prefix:   /admin/i18n
 ```
 
-Penser à mettre le même prefix "/admin" que easyadminbundle pr sécuriser l'accès.
+Penser à mettre le même prefix `/admin` que `EasyAdminBundle` pr sécuriser l'accès.
 	
 ###### Services
 
