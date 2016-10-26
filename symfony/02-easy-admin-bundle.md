@@ -594,7 +594,8 @@ php bin/console translation:extract fr --dir=./src/ --dir=./app/ --output-dir=./
 ```
 
 Suppimer les `validators.xx.xliff` si vous n'en avez pas besoin.
-Supprimer les anciens `yaml` si vous en aviez.
+
+**Supprimer les anciens `yaml` si vous en aviez.**
 			
 ###### Routing
 
