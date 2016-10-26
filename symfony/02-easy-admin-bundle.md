@@ -633,7 +633,7 @@ easy_admin:
             # - ...
 ```
 	
-Dans la view de notre route, charger en iframe `JMSTranslationBundle`:
+Dans la view de notre route, étendez du `layout` de `EasyAdminBundle` et charger en iframe `JMSTranslationBundle`:
 
 ```twig
 {# src/AppBundle/Resources/views/EasyAdminBridge/i18n.html.twig #}
