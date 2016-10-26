@@ -549,6 +549,8 @@ easy_admin:
 
 #### [JMSTranslationBundle](https://github.com/schmittjoh/JMSTranslationBundle)
 
+TL;DR : Un `bundle` permettant d'administrer par GUI l'ensemble des `translations` de son `app`.
+
 ###### Download
 
 ```bash
