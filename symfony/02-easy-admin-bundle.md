@@ -711,6 +711,9 @@ Surcharger le base layout de `JMSTranslationBundle` pour enlever le header et ad
 </html>
 ```
 
+###### Render
+
+![Screenshot](https://octodex.github.com/images/yaktocat.png)
 
 - - -
 
