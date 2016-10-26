@@ -703,8 +703,8 @@ Surcharger le base layout de `JMSTranslationBundle` pour enlever le header et ad
         </div>
 
         {% block javascripts %}
-        <script language="javascript" type="text/javascript" src="{{ asset("bundles/jmstranslation/js/jquery.js") }}"></script>
-        <script language="javascript" type="text/javascript" src="{{ asset("bundles/jmstranslation/js/trunk8.js") }}"></script>
+            <script language="javascript" type="text/javascript" src="{{ asset("bundles/jmstranslation/js/jquery.js") }}"></script>
+            <script language="javascript" type="text/javascript" src="{{ asset("bundles/jmstranslation/js/trunk8.js") }}"></script>
             <script type="text/javascript" src="{{ asset("bundles/jmstranslation/js/jms.js") }}"></script>
         {% endblock %}
     </body>
