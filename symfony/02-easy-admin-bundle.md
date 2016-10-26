@@ -547,6 +547,162 @@ easy_admin:
 > php bin/console cache:clear --env=prod
 ```
 
+#### [JMSTranslationBundle](https://github.com/schmittjoh/JMSTranslationBundle)
+
+###### Download
+
+```bash
+> composer require jms/translation-bundle
+> composer require jms/di-extra-bundle
+```
+
+###### Enable
+
+```php
+# app/AppKernel.php
+$bundles = array(
+    // ...
+	new JMS\TranslationBundle\JMSTranslationBundle(),
+	new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+	new JMS\AopBundle\JMSAopBundle(),
+	// ...
+);
+```
+
+###### Settings
+
+```yaml
+# app/config/config.yml
+jms_translation:
+    configs:
+        app:
+            dirs: ["%kernel.root_dir%", "%kernel.root_dir%/../src"]
+            output_dir: "%kernel.root_dir%/Resources/translations"
+            ignored_domains: []
+            excluded_names: []
+            excluded_dirs: [assets, bin, scripts, tasks, tests, var]
+            extractors: []
+```
+
+###### YML to XLIFF
+```bash
+php bin/console translation:extract fr --dir=./src/ --dir=./app/ --output-dir=./app/Resources/translations --output-format=xliff
+```
+
+Suppimer les `validators.xx.xliff` si vous n'en avez pas besoin.
+			
+###### Routing
+
+```yaml
+# app/config/routing.yml
+JMSTranslationBundle_ui:
+    resource: "@JMSTranslationBundle/Controller/"
+    type:     annotation
+    prefix:   /admin/i18n
+```
+
+Penser à mettre le même prefix "/admin" que easyadminbundle pr sécuriser l'accès.
+	
+###### Services
+
+```yaml
+# app/config/services.yml
+twig.text_extension:
+	class: Twig_Extensions_Extension_Text
+	tags:
+		- name: twig.extension
+```
+		
+###### Intégration avec easyadminbundle
+
+Créer une nouvelle route dans `AppBundle` (eg: l'action `i18n` dans le controler `EasyAdminBridge`) et la charger dans `EasyAdminBundle`.
+
+```yaml
+# app/config/config.yml
+easy_admin:
+    design:
+        menu:
+            - { route: 'i18n', label: 'Traductions', icon: 'globe', params: { menuIndex: 4 } } # dirty param to put the "active" class on <li>
+			
+Dans la view de notre route, charger en iframe `JMSTranslationBundle`:
+
+```twig
+{# src/AppBundle/Resources/views/EasyAdminBridge/i18n.html.twig #}
+
+{% extends "@EasyAdmin/default/layout.html.twig" %}
+
+{% block title %}Traductions{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        #bridgei18n {
+            overflow:hidden;
+            height:calc(100% - 50px);
+            width:calc(100% - 230px);
+            position:absolute;
+            top:50px;
+            right:0px;
+            bottom:0px;
+            left:220px;
+        }
+        @media screen and (max-width: 767px) {
+            #bridgei18n {
+                width:100%;
+                top:70px;
+                left:0;
+            }
+        }
+    </style>
+    <iframe id="bridgei18n" frameborder="0" src="{{ path('jms_translation_index') }}"></iframe>
+{% endblock %}
+```
+
+Surcharger le base layout de JMS pour enlever le header et adapter la vue à une inclusion en iframe.
+
+```twig
+{# app/Resources/JMSTranslationBundle/views/base.html.twig #}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}JMSTranslationBundle UI{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset("bundles/jmstranslation/css/bootstrap.css") }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset("bundles/jmstranslation/css/layout.css") }}" />
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block topjavascripts %}{% endblock %}
+    </head>
+    <body>
+        <style type="text/css">
+            .container {
+                width:90%;
+                margin:0 !important;
+                padding:20px 0 0 40px;
+            }
+            @media screen and (max-width: 767px) {
+                .container {
+                    width:95%;
+                    padding:20px 0 0 20px !important;
+                }
+                input.span6, textarea.span6, select.span6 {
+                    width:auto !important;
+                }
+            }
+        </style>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+
+        {% block javascripts %}
+        <script language="javascript" type="text/javascript" src="{{ asset("bundles/jmstranslation/js/jquery.js") }}"></script>
+        <script language="javascript" type="text/javascript" src="{{ asset("bundles/jmstranslation/js/trunk8.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("bundles/jmstranslation/js/jms.js") }}"></script>
+        {% endblock %}
+    </body>
+</html>
+```
+
+
 - - -
 
 ## Full example
