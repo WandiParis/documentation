@@ -629,7 +629,8 @@ easy_admin:
     design:
         menu:
             - { route: 'i18n', label: 'Traductions', icon: 'globe', params: { menuIndex: 4 } } # dirty param to put the "active" class on <li>
-			
+```
+	
 Dans la view de notre route, charger en iframe `JMSTranslationBundle`:
 
 ```twig
