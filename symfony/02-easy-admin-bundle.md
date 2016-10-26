@@ -615,7 +615,7 @@ twig.text_extension:
 		- name: twig.extension
 ```
 		
-###### Intégration avec easyadminbundle
+###### EasyAdminBundle
 
 Créer une nouvelle route dans `AppBundle` (eg: l'action `i18n` dans le controler `EasyAdminBridge`) et la charger dans `EasyAdminBundle`.
 
