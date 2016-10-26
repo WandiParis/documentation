@@ -713,7 +713,7 @@ Surcharger le base layout de `JMSTranslationBundle` pour enlever le header et ad
 
 ###### Render
 
-![Screenshot](https://octodex.github.com/images/yaktocat.png)
+![Screenshot](https://raw.githubusercontent.com/WandiParis/documentation/master/symfony/img/jms-ez.png)
 
 - - -
 
