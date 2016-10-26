@@ -666,7 +666,7 @@ Dans la view de notre route, étendez du `layout` de `EasyAdminBundle` et charge
 {% endblock %}
 ```
 
-Surcharger le base layout de JMS pour enlever le header et adapter la vue à une inclusion en iframe.
+Surcharger le base layout de `JMSTranslationBundle` pour enlever le header et adapter la vue à une inclusion en iframe.
 
 ```twig
 {# app/Resources/JMSTranslationBundle/views/base.html.twig #}
