@@ -1,4 +1,4 @@
-# Installation de Gulp et des tâches
+# Création du fichier `gulpfile.babel.js`
 
 ## Création du fichier
 
