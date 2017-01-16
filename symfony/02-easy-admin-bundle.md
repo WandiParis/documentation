@@ -231,6 +231,7 @@ vich_uploader:
         product_image:
             uri_prefix:         "%product_images_path%"
             upload_destination: '%kernel.root_dir%/../web/uploads/products'
+	    namer:		vich_uploader.namer_uniqid
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -731,6 +732,7 @@ vich_uploader:
         product_image:
             uri_prefix:         "%product_images_path%"
             upload_destination: '%kernel.root_dir%/../web/uploads/products'
+	    namer:		vich_uploader.namer_uniqid
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
