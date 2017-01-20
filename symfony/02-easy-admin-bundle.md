@@ -523,7 +523,7 @@ Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique 
 window.onload = function () {
 	if (window.CKEDITOR){
 		var path = '/ckfinder/connector';
-        	CKFinder.config( { connectorPath: window.location.pathname.indexOf("app_dev.php") ? '/app_dev.php'+path : path} );
+        CKFinder.config( { connectorPath: window.location.pathname.indexOf("app_dev.php") ? '/app_dev.php'+path : path} );
 		for (var ckInstance in CKEDITOR.instances){
 			CKFinder.setupCKEditor(CKEDITOR.instances[ckInstance]);
 		}
