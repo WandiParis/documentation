@@ -693,7 +693,7 @@ Ici on check:
 
 C'est exactement la même logique que pour l'action `Show`, il faut ne pas faire appaitre seulement le bouton `Delete` en fonction du `role`.
 
-En revanche, je ne sais pas bien pourquoi mais le `block` a surcharger (`item_actions`) se trouve dans le form theme (`bootstrap_3_layout.html.twig`) et non pas dans le twit d'édition.
+En revanche, je ne sais pas bien pourquoi mais le `block` a surcharger (`item_actions`) se trouve dans le form theme (`bootstrap_3_layout.html.twig`) et non pas dans le twig d'édition.
 
 L'approche est donc un peu différente, on va créer notre faux form theme côté `app` et le faire hériter du vrai côté `vendor` afin de ne pas devoir reprendre l'ensemble du code du thème et seulement extends le `block` concerné.
 
