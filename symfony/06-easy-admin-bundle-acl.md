@@ -824,6 +824,7 @@ Ci-dessous l'ensemble des fichiers modifiés/ajoutés pour mettre en place toute
             * *easy_admin*
                 * *form*
                     * `bootstrap_3_layout.html.twig` > le form theme surchargé
+                * `field_toggle.html.twig` > la surchage du toogle pour inclure le boolean
                 * `layout.html.twig` > le tuning du layout pour ajouter un bouton 'déconnexion'
                 * `list.html.twig` > la surcharge du listing
                 * `menu.html.twig` > la surcharge du menu pour la navigation
