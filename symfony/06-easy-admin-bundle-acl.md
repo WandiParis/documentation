@@ -757,6 +757,37 @@ Puis créer notre propre form_theme:
 {% endblock item_actions %}
 ```
 
+### Actions (QuickEdit)
+
+`EasyAdmin` offre la particularité d'offrir un quick-edit directement dans le listing et ce, uniquement pour les champs `boolean` overridé dans la config par un type `toggle` (sic):
+
+Afin de s'assurer que le quick-edit n'est pas accessible sur le listing en fonction du `role`, le seul moyen que j'ai trouvé est de surcharger le `field_toggle` pour faire la vérification et charger le `type_boolean` dans le cas où  les privilèges sont insuffisants:
+
+```twig
+# src/Resources/views/easy_admin/field_toggle.html.twig
+
+{% trans_default_domain 'EasyAdminBundle' %}
+
+{% if view == 'show' %}
+    {% if value == true %}
+        <span class="label label-success">{{ 'label.true'|trans }}</span>
+    {% else %}
+        <span class="label label-danger">{{ 'label.false'|trans }}</span>
+    {% endif %}
+{% else %}
+
+    {% if entity_config.edit is defined and entity_config.edit.role is defined and not is_granted(entity_config.edit.role) %}
+        {% include '@EasyAdmin/default/field_boolean.html.twig' %}
+    {% else %}
+        <input type="checkbox" {{ value == true ? 'checked' : '' }}
+               data-toggle="toggle" data-size="mini"
+               data-onstyle="success" data-offstyle="danger"
+               data-on="{{ 'label.true'|trans }}" data-off="{{ 'label.false'|trans }}">
+    {% endif %}
+
+{% endif %}
+```
+
 ### Cosmétique et ergo (Layout)
 
 Au dela des droits custom, ca ne semble pas du luxe de permettre un petit bouton `Logout` sur ce Bo, jamais compris pourquoi il n'y en avait pas de base.
