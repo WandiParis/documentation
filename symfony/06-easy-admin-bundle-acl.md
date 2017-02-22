@@ -782,7 +782,28 @@ La best practice aurait été de surcharger le dictionnaire `EasyAdminBundle` (j
 
 ## Résumé
 
-Voila l'ensemble des fichiers modifiés/ajoutés pour mettre en place toute cette gestion de droits:
-
+Ci-dessous l'ensemble des fichiers modifiés/ajoutés pour mettre en place toute cette gestion de droits:
+* *app*
+    * *config*
+        * `config_easyadmin.yml` > la conf easyadmin
+        * `security.yml` > les firewalls et roles
+        * `services.yml` > la déclaration du service AppSubscriber
+    * *resources*
+        * *views*
+            * *easy_admin*
+                * *form*
+                    * `bootstrap_3_layout.html.twig` > le form theme surchargé
+                * `layout.html.twig` > le tuning du layout pour ajouter un bouton 'déconnexion'
+                * `list.html.twig` > la surcharge du listing
+                * `menu.html.twig` > la surcharge du menu pour la navigation
+                * `show.html.twig` > la surchage de la page view
+* *src*
+    * *AppBundle*
+        * *DependencyInjection*
+            * *Compiler*
+                * `ConfigPass.php` > la pass de compil avant init du bundle
+        * *EventListener*
+            * `AppSubscriber.php` > le service qui restreint l'accès à une action en fonction des rôles
+        * `AppBundle.php` > l'appel à la pass de compil
 
 A terme, j'essayerai d'en faire notre propre `Bundle` qui dépend de `EasyAdmin` pour gagner du temps.
