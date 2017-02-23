@@ -370,7 +370,7 @@ services:
 
 ```
  
-Heureusement pour nous, `EasyAdmin` soulève des events en amont de tout ce qui nous intéresse (new, list, edit, show & delete) un bon lot d'events.
+Heureusement pour nous, `EasyAdmin` soulève des events en amont de tout ce qui nous intéresse (new, list, edit, show & delete).
 
 Pour chacun de ces événements, on va vérifier si on a bien l'autorisation d'y accéder:
 
@@ -708,7 +708,7 @@ easy_admin:
             - 'easy_admin/form/bootstrap_3_layout.html.twig'
 ```
 
-Puis créer notre propre form_theme:
+Puis de le créer:
 
 ```twig
 # src/Resources/views/easy_admin/form/bootstrap_3_layout.html.twig
