@@ -1,20 +1,18 @@
-# Installation de Gulp et des tâches
+# Ecriture du fichier `gulpfile.js`
 
 ## Création du fichier
 
-Le fichier doit obligatoirement s'appeler `gulpfile.babel.js`. Cela est dû au
-fait que nous écrivons ce fichier en ES6+, ce qui oblige Gulp à le lancer en
-utilisant babel.
+Le fichier doit s'appeler `gulpfile.js`.
 
 ## Importation des tâches
 
 Les tâches sont à importer de la manière suivante :
 
 ```js
-import gulp from 'gulp'
-import styles from 'gulp-styles'
-import javascripts from 'gulp-javascripts'
-import images from 'gulp-images'
+const gulp = require("gulp");
+const styles = require("@wandiparis/gulp-styles");
+const javascripts = require("@wandiparis/gulp-javascripts");
+const images = require("@wandiparis/gulp-images");
 ```
 
 ## Définition de la tâche `compile`
@@ -24,14 +22,14 @@ ressources front-end du projet. Elle peut potentiellement être différente pour
 chaque projet. Voici un exemple :
 
 ```js
-import gulp from 'gulp'
-import styles from 'gulp-styles'
-import javascripts from 'gulp-javascripts'
-import images from 'gulp-images'
+const gulp = require("gulp");
+const styles = require("@wandiparis/gulp-styles");
+const javascripts = require("@wandiparis/gulp-javascripts");
+const images = require("@wandiparis/gulp-images");
 
 const compile = gulp.parallel(
     styles(),
-    javascripts(),
+    javascripts({rootDir: __dirname})(),
     images()
 )
 ```
@@ -43,15 +41,17 @@ les tâches adéquate(s) lorsqu'un fichier est modifié. Elle peut, elle aussi,
 potentiellement être différente pour chaque projet. Voici un exemple :
 
 ```js
-import gulp from 'gulp'
-import styles from 'gulp-styles'
-import javascripts from 'gulp-javascripts'
-import images from 'gulp-images'
+const gulp = require("gulp");
+const styles = require("@wandiparis/gulp-styles");
+const javascripts = require("@wandiparis/gulp-javascripts");
+const images = require("@wandiparis/gulp-images");
 
 const watch = () => {
-    gulp.watch('assets/scss/**/*.scss', styles())
-    gulp.watch('assets/js/**/*.js', styles())
-    gulp.watch('assets/img/**/*.{jpg,png,gif,svg}', images())
+    gulp.watch("assets/scss/**/*.scss", styles());
+    gulp.watch("assets/js/**/*.js", styles());
+    gulp.watch("assets/img/**/*.{jpg,png,gif,svg}", images());
+
+    javascripts({rootDir: __dirname}, {watch: true})();
 }
 ```
 
@@ -63,34 +63,55 @@ exporter, afin de pouvoir les utiliser via la CLI :
 ```js
 // ... importation des tâches et définition des tâches compile et watch
 
-export {
+module.exports = {
     compile,
-    watch
-}
+    watch,
+};
 ```
 
 ## Exemple de `gulpfile` complet
 
 ```js
-import gulp from 'gulp'
-import styles from 'gulp-styles'
-import javascripts from 'gulp-javascripts'
-import images from 'gulp-images'
+const gulp = require("gulp");
+const baseStyles = require("@wandiparis/gulp-styles");
+const baseJavascripts = require("@wandiparis/gulp-javascripts");
+const images = require("@wandiparis/gulp-images");
+const fonts = require("@wandiparis/gulp-fonts");
+const sprite = require("@wandiparis/gulp-sprite");
+
+const styles = baseStyles({
+    src: "assets/scss/*.scss",
+    sassOptions: { includePaths: ["node_modules"] },
+});
+
+const javascripts = baseJavascripts({
+    rootDir: __dirname,
+});
 
 const compile = gulp.parallel(
-    styles(),
-    javascripts(),
-    images()
-)
+    javascripts,
+    fonts(),
+    gulp.series(
+        sprite(),
+        styles,
+        images()
+    )
+);
 
 const watch = () => {
-    gulp.watch('assets/scss/**/*.scss', styles())
-    gulp.watch('assets/js/**/*.js', styles())
-    gulp.watch('assets/img/**/*.{jpg,png,gif,svg}', images())
-}
+    gulp.watch("assets/scss/**/*.scss", styles);
+    gulp.watch("assets/img/**/*.{jpg,png,gif,svg}", images());
+    gulp.watch("assets/img/icons/*.png", sprite());
 
-export {
+    baseJavascripts({
+        rootDir: __dirname,
+    }, {
+        watch: true,
+    })();
+};
+
+module.exports = {
     compile,
-    watch
-}
+    watch,
+};
 ```

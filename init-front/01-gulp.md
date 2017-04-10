@@ -21,7 +21,7 @@ si je souhaite installer `gulp-styles`, `gulp-javascripts` et `gulp-images`, je
 peux faire ceci :
 
 ```
-npm install --save-dev "github:wandiparis/gulp-styles" "github:wandiparis/gulp-javascripts" "github:wandiparis/gulp-images"
+npm install --save-dev @wandiparis/gulp-styles @wandiparis/gulp-javascripts @wandiparis/gulp-images
 ```
 
 Ainsi, npm installera l'ensemble des dépendances de ces 3 tâches. Ces tâches
