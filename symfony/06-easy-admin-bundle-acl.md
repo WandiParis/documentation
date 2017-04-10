@@ -790,7 +790,7 @@ Afin de s'assurer que le quick-edit n'est pas accessible sur le listing en fonct
 
 ### Cosmétique et ergo (Layout)
 
-`EasyAdmin` a enfin implémenter ça nativement, cocorico !
+`EasyAdmin` a enfin implémenté ça nativement, cocorico !
 > https://github.com/javiereguiluz/EasyAdminBundle/releases/tag/v1.16.8
 
 ~~Au dela des droits custom, ca ne semble pas du luxe de permettre un petit bouton `Logout` sur ce Bo, jamais compris pourquoi il n'y en avait pas de base.~~
