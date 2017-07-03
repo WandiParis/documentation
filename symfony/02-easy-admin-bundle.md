@@ -231,6 +231,7 @@ vich_uploader:
         product_image:
             uri_prefix:         "%product_images_path%"
             upload_destination: '%kernel.root_dir%/../web/uploads/products'
+	    namer:		vich_uploader.namer_uniqid
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -521,7 +522,8 @@ Il n'y a pas de possibilité proposée par `EasyAdminBundle`, donc la technique 
 // web/js/setup-ckfinder.js
 window.onload = function () {
 	if (window.CKEDITOR){
-		CKFinder.config( { connectorPath: '/app.php/ckfinder/connector' } );
+		var path = '/ckfinder/connector';
+        CKFinder.config( { connectorPath: (window.location.pathname.indexOf("app_dev.php") == -1) ? path : '/app_dev.php'+path} );
 		for (var ckInstance in CKEDITOR.instances){
 			CKFinder.setupCKEditor(CKEDITOR.instances[ckInstance]);
 		}
@@ -731,6 +733,7 @@ vich_uploader:
         product_image:
             uri_prefix:         "%product_images_path%"
             upload_destination: '%kernel.root_dir%/../web/uploads/products'
+	    namer:		vich_uploader.namer_uniqid
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
