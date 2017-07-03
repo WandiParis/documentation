@@ -79,13 +79,17 @@ const images = require("@wandiparis/gulp-images");
 const fonts = require("@wandiparis/gulp-fonts");
 const sprite = require("@wandiparis/gulp-sprite");
 
+const production = process.env.NODE_ENV === "production";
+
 const styles = baseStyles({
     src: "assets/scss/*.scss",
     sassOptions: { includePaths: ["node_modules"] },
+    production,
 });
 
 const javascripts = baseJavascripts({
     rootDir: __dirname,
+    production,
 });
 
 const compile = gulp.parallel(
