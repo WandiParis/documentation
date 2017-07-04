@@ -31,4 +31,4 @@ Attention, certaines tâches (`gulp-javascripts`, par exemple) nécessitent de
 créer des fichiers de configuration. Lorsqu'une tâche a besoin d'un ou plusieurs
 fichiers de configuration, sa documentation l'indique clairement.
 
-[Suivant : Création du fichier `gulpfile.babel.js`](/init-front/01-gulp.md)
+[Suivant : Création du fichier `gulpfile.js`](/init-front/02-gulpfile.md)
