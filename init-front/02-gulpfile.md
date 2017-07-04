@@ -119,3 +119,5 @@ module.exports = {
     watch,
 };
 ```
+
+[Suivant : Création des scripts npm](/init-front/03-npm-scripts.md)
