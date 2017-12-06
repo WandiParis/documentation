@@ -29,9 +29,9 @@ const images = require("@wandiparis/gulp-images");
 
 const compile = gulp.parallel(
     styles(),
-    javascripts({rootDir: __dirname})(),
+    javascripts(),
     images()
-)
+);
 ```
 
 ## Définition de la tâche `watch`
@@ -51,7 +51,7 @@ const watch = () => {
     gulp.watch("assets/js/**/*.js", styles());
     gulp.watch("assets/img/**/*.{jpg,png,gif,svg}", images());
 
-    javascripts({rootDir: __dirname}, {watch: true})();
+    javascripts({}, {watch: true})();
 }
 ```
 
@@ -71,53 +71,6 @@ module.exports = {
 
 ## Exemple de `gulpfile` complet
 
-```js
-const gulp = require("gulp");
-const baseStyles = require("@wandiparis/gulp-styles");
-const baseJavascripts = require("@wandiparis/gulp-javascripts");
-const images = require("@wandiparis/gulp-images");
-const fonts = require("@wandiparis/gulp-fonts");
-const sprite = require("@wandiparis/gulp-sprite");
-
-const production = process.env.NODE_ENV === "production";
-
-const styles = baseStyles({
-    src: "assets/scss/*.scss",
-    sassOptions: { includePaths: ["node_modules"] },
-    production,
-});
-
-const javascripts = baseJavascripts({
-    rootDir: __dirname,
-    production,
-});
-
-const compile = gulp.parallel(
-    javascripts,
-    fonts(),
-    gulp.series(
-        sprite(),
-        styles,
-        images()
-    )
-);
-
-const watch = () => {
-    gulp.watch("assets/scss/**/*.scss", styles);
-    gulp.watch("assets/img/**/*.{jpg,png,gif,svg}", images());
-    gulp.watch("assets/img/icons/*.png", sprite());
-
-    baseJavascripts({
-        rootDir: __dirname,
-    }, {
-        watch: true,
-    })();
-};
-
-module.exports = {
-    compile,
-    watch,
-};
-```
+Voir le [template `gulpfile.js` de troposphere](https://github.com/WandiParis/troposphere/blob/master/lib/commands/init/templates/gulpfile.js)
 
 [Suivant : Création des scripts npm](/init-front/03-npm-scripts.md)

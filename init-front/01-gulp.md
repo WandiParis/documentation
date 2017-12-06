@@ -12,8 +12,8 @@ npm init -y
 ## Installation des tâches
 
 Nous disposons de plusieurs tâches génériques pré-packagées installables
-directement via npm. Elles sont listées sur
-[cette page](https://github.com/WandiParis?utf8=%E2%9C%93&q=gulp-&type=&language=).
+directement via npm. Elles sont regroupées dans le repository
+[gulp-tasks](https://github.com/WandiParis/gulp-tasks).
 
 Chaque tâche peut être installée indépendamment. Il est toutefois possible
 d'installer l'ensemble des tâches souhaitées en une seule commande. Par exemple,
@@ -25,7 +25,8 @@ npm install --save-dev @wandiparis/gulp-styles @wandiparis/gulp-javascripts @wan
 ```
 
 Ainsi, npm installera l'ensemble des dépendances de ces 3 tâches. Ces tâches
-embarquent déjà la version 4.0 de Gulp.
+embarquent déjà la version 4.0 de Gulp dans leurs dépendances. Il n'y a donc
+pas besoin d'installer Gulp à part.
 
 Attention, certaines tâches (`gulp-javascripts`, par exemple) nécessitent de
 créer des fichiers de configuration. Lorsqu'une tâche a besoin d'un ou plusieurs
